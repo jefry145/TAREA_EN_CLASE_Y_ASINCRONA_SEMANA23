@@ -1,0 +1,24 @@
+
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>Actions Buttons</mat-card-title>
+      </mat-card-header>
+    <mat-card-content>
+        <div class="mensaje">
+            <ol>
+                <li>
+                  <mat-form-field appearance="fill">
+                    <mat-label>What's your name?</mat-label>
+                    <input matInput [(ngModel)]="name">
+                  </mat-form-field>
+                </li>
+                <li>
+                  <button mat-raised-button (click)="openDialog()">Pick one</button>
+                </li>
+                <li *ngIf="animal">
+                  You chose: <i>{{animal}}</i>
+                </li>
+              </ol>
+        </div>
+    </mat-card-content>
+  </mat-card>

@@ -1,0 +1,102 @@
+<div class="grid-container">
+    <h1>Dashboard</h1>
+    <mat-grid-list cols="2" rowHeight="390px">
+
+        <mat-grid-tile>
+          <mat-card class="dashboard-card">
+  
+            <mat-card-header>
+              <mat-card-title>
+                <h1>Operadores Matematicos:</h1>
+                <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" xPosition="before">
+                  <button mat-menu-item>Save</button>
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+  
+            <mat-card-content>
+                <mat-grid-list cols="1" row="2" rowHeight="90px">
+                    <mat-grid-tile>
+                        <mat-form-field  appearance="outline" class="example-full-width">
+                            <mat-label>Primer Valor:</mat-label>
+                            <input type="number" matInput [(ngModel)]="valor1" > <!-- (ngModelChange)="OperacionesAritmeticas()"--> 
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field  appearance="outline" class="example-full-width">
+                            <mat-label>Segundo Valor:</mat-label>
+                            <input type="number" matInput  [(ngModel)]="valor2" > <!-- (ngModelChange)="OperacionesAritmeticas()"--> 
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="1" row="1" rowHeight="20px">
+                    <mat-grid-tile>
+                        <button mat-raised-button class="Card-options-Mats"><mat-slide-toggle  [(ngModel)]="Resta">Resta</mat-slide-toggle></button>
+                        <button mat-raised-button class="Card-options-Mats"><mat-slide-toggle  [(ngModel)]="Suma">Suma</mat-slide-toggle></button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="1" row="1" rowHeight="35px">
+                    <mat-grid-tile>
+                        <button mat-raised-button class="Card-options-Mats"><mat-slide-toggle  [(ngModel)]="Divicion">Diviciòn</mat-slide-toggle></button>
+                        <button mat-raised-button class="Card-options-Mats"><mat-slide-toggle  [(ngModel)]="Mult">Multiplicaciòn</mat-slide-toggle></button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                <mat-grid-list cols="1" row="1" rowHeight="50px">
+                    <mat-grid-tile>
+                        <button mat-raised-button color="primary"(click)="OperacionesAritmeticas()">Calcular</button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+  
+          </mat-card>
+  
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <h1>Resultados:</h1>
+                    <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>La suma es : {{resultSuma}}<br>
+                    La resta es : {{resultResta}}<br>
+                    La multiplicaciòn es : {{resultMult}}<br>
+                    La Division es : {{resultDiv}}</p>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      
+    <mat-grid-list cols="2" rowHeight="350px">
+
+      <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+        
+        <mat-card class="dashboard-card">
+
+          <mat-card-header>
+            <mat-card-title>
+              {{card.title}}
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item>Save</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content class="dashboard-card-content">
+            <div>Card Content Here</div>
+          </mat-card-content>
+
+        </mat-card>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
